@@ -1,6 +1,5 @@
 
-from os import abort
-from flask import Blueprint, flash, g, redirect, render_template, request, url_for
+from flask import Blueprint, abort, flash, g, redirect, render_template, request, url_for
 from flaskr.auth import login_required
 from flaskr.db import get_db
 
@@ -27,8 +26,8 @@ def create():
         title = request.form['title']
         body = request.form['body']
         error = None
-        if title is None:
-            error = 'title can\'t be empty'
+        if not title:
+            error = 'title cant be empty'
         elif body is None:
             error = 'body is required'
 
